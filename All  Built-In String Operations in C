@@ -1,0 +1,187 @@
+#include<stdio.h>
+#include<string.h>
+
+
+//  Every String Operation 
+void string_copy();
+void string_length();
+void string_concating();
+void string_reverse();
+void string_comparing();
+void string_convert_upper();
+void string_convert_lower();
+void string_compare_caseInsensitive();
+void string_sort_Byorder();
+
+int main()
+{
+ string_sort_Byorder();
+ string_compare_caseInsensitive();
+ /*
+strcmpi( str1, str2 )
+Gives -1 if (str1 < str2) 
+       0 if (str1 == str2 )
+       1 if (str1 > str2 )
+*/
+string_convert_lower();
+string_convert_upper();
+string_comparing();
+string_reverse();
+string_concating();
+string_length();
+string_copy();
+
+return 0;
+}
+
+void string_length()
+{
+char name[20];
+printf("\nEnter a string : ");
+scanf("%s",&name); // take string input
+
+int x= strlen(name);  // strlen --> length of a string 
+printf("Length of a string is %d",x);
+printf("\n=================================================");
+}
+
+void string_copy()
+{
+char name[20],name2[20];
+printf("\nEnter a string : ");
+scanf("%s",&name); // take string input
+
+strcpy(name2,name);
+printf("Copied string is:");
+puts(name2);
+printf("\n=================================================");
+}
+
+void string_concating()
+{
+char name[20],name2[20];
+printf("\nEnter 1st string : ");
+scanf("%s",&name); // take string input
+printf("Enter 2nd string : ");
+scanf("%s",&name2); // take 2nd string
+
+strcat(name,name2);
+printf("Both Strings are added :%s",name);
+printf("\n=================================================");
+
+}
+
+void string_reverse()
+{
+char name[20];
+printf("\nEnter a string : ");
+scanf("%s",&name); // take string input
+
+strrev(name);
+printf("Reverse of a string is :%s",name);
+printf("\n=================================================");
+}
+
+void string_comparing()
+{
+char name[20],name2[20];
+int x;
+printf("\nEnter a string : ");
+scanf("%s",&name);// take string input
+printf("Enter 2nd string : ");
+scanf("%s",&name2); // take 2nd string
+
+x=strcmp(name,name2);
+
+if (x==0)
+printf("Both Strings are Same");
+else
+printf("Both string are Different");
+printf("\n=================================================");
+}
+
+void string_convert_upper()
+{
+char name[20];
+printf("\nEnter a string to convert into upper-case: ");
+scanf("%s",&name);
+
+strupr(name);
+printf("Upper Case string is :%s",name);
+printf("\n=================================================");
+}
+
+void string_convert_lower()
+{
+char name[20];
+printf("\nEnter a string to convert into lower-case: ");
+scanf("%s",&name);
+
+strlwr(name);
+printf("Lower Case string is :%s",name);
+printf("\n=================================================");
+}
+
+void string_compare_caseInsensitive()
+{
+/*
+strcmpi( str1, str2 )
+Gives -1 if (str1 < str2) alphabetically
+       0 if (str1 == str2) alphabetically
+       1 if (str1 > str2) alphabetically
+
+       alphabetical order matters
+*/
+char name[20],name2[20];
+int x;
+printf("\nEnter 1st string : ");
+scanf("%s",&name);// take string input
+
+printf("\nEnter 2nd string : ");
+scanf("%s",&name2);
+
+x=strcmpi(name,name2);
+
+if (x==0)
+printf("Alphabetical Order is same %s , %s",name,name2);
+else if(x==-1)
+printf("Alphabetical Order is %s , %s ",name,name2);
+else if(x==1)
+printf("Alphabetical Order is %s , %s ",name2,name);
+printf("\n=================================================");
+
+}
+
+void string_sort_Byorder()
+{
+ int i,j,n;
+   char str[100][100],s[100];
+
+   printf("Enter number of names :");
+   scanf("%d",&n);
+
+   printf("Enter names in any order:");
+   for(i=0;i<n;i++)
+   {
+      scanf("%s",str[i]);// a d c b
+   }
+
+   for(i=0;i<n;i++){
+      for(j=i+1;j<n;j++)
+      {
+         if(strcmp(str[i],str[j])>0)
+         {
+            strcpy(s,str[i]);
+            strcpy(str[i],str[j]);
+            strcpy(str[j],s);
+         }
+      }
+   }
+   printf("The sorted order of names are:");
+   for(i=0;i<n;i++)
+   {
+      printf("%s,",str[i]);
+   }
+printf("\n=================================================");
+
+}
